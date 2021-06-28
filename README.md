@@ -2,7 +2,7 @@
 
 **Tweeter** is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
 
-Time spent: **2.5** hours spent in total
+Time spent: **3.5** hours spent in total
 
 ## User Stories
 
