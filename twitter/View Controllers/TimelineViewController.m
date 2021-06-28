@@ -16,6 +16,7 @@
 @interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSMutableArray *arrayOfTweets;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @end
 
 @implementation TimelineViewController
@@ -23,11 +24,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    
     NSLog(@"hello");
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    [self fetchTweets];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init]; //initializing pull to refresh control
+    [self.refreshControl addTarget:self action:@selector(fetchTweets) forControlEvents:UIControlEventValueChanged]; //call fetchMovies on self when UIControlEventValueChanged
+    [self.refreshControl setTintColor:[UIColor blueColor]];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
+}
+
+-(void) fetchTweets{
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
@@ -41,6 +54,7 @@
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
+        [self.refreshControl endRefreshing];
     }];
 }
 
