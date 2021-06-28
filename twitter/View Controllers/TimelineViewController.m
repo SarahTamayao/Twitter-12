@@ -7,7 +7,7 @@
 //
 
 #import "TimelineViewController.h"
-#import "APIManager.h"
+#import "../API/APIManager.h"
 
 @interface TimelineViewController ()
 
@@ -17,6 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSLog(@"hello");
     
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
