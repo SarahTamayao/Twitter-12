@@ -90,6 +90,7 @@
     
     //get tweet
     Tweet *tweet = self.arrayOfTweets[indexPath.row];
+    cell.tweet = tweet;
     
     //set pfp
     NSString *URLString = tweet.user.profilePicture;
@@ -113,15 +114,15 @@
     //set retweeted
     UIImage *rticon = [UIImage imageNamed:@"retweet-icon"];
     if(tweet.retweeted) rticon = [UIImage imageNamed:@"retweet-icon-green"];
-    [cell.retweetIcon setImage:rticon];
+    [cell.retweetIcon setImage:rticon forState:UIControlStateNormal];
     
     //set retweet count
     cell.retweetCountLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
     
     //set favorited
     UIImage *favoricon = [UIImage imageNamed:@"favor-icon"];
-    if(tweet.favorited) favoricon = [UIImage imageNamed:@"favor-icon-green"];
-    [cell.favoriteIcon setImage:favoricon];
+    if(tweet.favorited) favoricon = [UIImage imageNamed:@"favor-icon-red"];
+    [cell.favoriteIcon setImage:favoricon forState:UIControlStateNormal];
     
     //set favorite count
     cell.favoriteCountLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
