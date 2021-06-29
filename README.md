@@ -1,8 +1,8 @@
-# Project 3 - *Tweeter*
+# Project 3 - *Twitter*
 
-**Tweeter** is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
+**Twitter** is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
 
-Time spent: **3.5** hours spent in total
+Time spent: **5.5** hours spent in total
 
 ## User Stories
 
@@ -14,8 +14,8 @@ The following **required** functionality is completed:
 - [x] User can view last 20 tweets from their home timeline
 - [x] In the home timeline, user can view tweet with the user profile picture, username, tweet text, and timestamp.
 - [x] User can pull to refresh.
-- [ ] User can tap the retweet and favorite buttons in a tweet cell to retweet and/or favorite a tweet.
-- [ ] User can compose a new tweet by tapping on a compose button.
+- [x] User can tap the retweet and favorite buttons in a tweet cell to retweet and/or favorite a tweet.
+- [x] User can compose a new tweet by tapping on a compose button.
 - [ ] Using AutoLayout, the Tweet cell should adjust its layout for iPhone 11, Pro and SE device sizes as well as accommodate device rotation.
 - [ ] User should display the relative timestamp for each tweet "8m", "7h"
 - [ ] Tweet Details Page: User can tap on a tweet to view it, with controls to retweet and favorite.
@@ -26,7 +26,7 @@ The following **optional** features are implemented:
   - Contains the user header view: picture and tagline
   - Contains a section with the users basic stats: # tweets, # following, # followers
   - [ ] Profile view should include that user's timeline
-- [ ] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count. Refer to [[this guide|unretweeting]] for help on implementing unretweeting.
+- [x] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count. Refer to [[this guide|unretweeting]] for help on implementing unretweeting.
 - [ ] Links in tweets are clickable.
 - [ ] User can tap the profile image in any tweet to see another user's profile
   - Contains the user header view: picture and tagline
