@@ -7,6 +7,7 @@
 //
 
 #import "TweetCell.h"
+#import "APIManager.h"
 #import "UIImageView+AFNetworking.h" //to add methods to ImageView
 
 @implementation TweetCell
@@ -63,10 +64,30 @@
     if (self.tweet.retweeted){
         self.tweet.retweeted = NO;
         self.tweet.retweetCount -= 1;
+        
+        // TODO: Send a POST request to the POST favorites/destory endpoint
+         [[APIManager shared] unretweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+             if(error){
+                  NSLog(@"Error unretweeting tweet: %@", error.localizedDescription);
+             }
+             else{
+                 NSLog(@"Successfully unretweeted the following Tweet: %@", tweet.text);
+             }
+         }];
     }
     else{
         self.tweet.retweeted = YES;
         self.tweet.retweetCount += 1;
+        
+        // TODO: Send a POST request to the POST favorites/create endpoint
+         [[APIManager shared] retweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
+             if(error){
+                  NSLog(@"Error retweeting tweet: %@", error.localizedDescription);
+             }
+             else{
+                 NSLog(@"Successfully retweeted the following Tweet: %@", tweet.text);
+             }
+         }];
     }
     
     [self refreshData];
@@ -78,10 +99,30 @@
     if (self.tweet.favorited){
         self.tweet.favorited = NO;
         self.tweet.favoriteCount -= 1;
+        
+        // TODO: Send a POST request to the POST favorites/destory endpoint
+         [[APIManager shared] unfavorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
+             if(error){
+                  NSLog(@"Error unfavoriting tweet: %@", error.localizedDescription);
+             }
+             else{
+                 NSLog(@"Successfully unfavorited the following Tweet: %@", tweet.text);
+             }
+         }];
     }
     else{
         self.tweet.favorited = YES;
         self.tweet.favoriteCount += 1;
+        
+        // TODO: Send a POST request to the POST favorites/create endpoint
+         [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
+             if(error){
+                  NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
+             }
+             else{
+                 NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
+             }
+         }];
     }
     
     [self refreshData];

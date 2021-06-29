@@ -217,13 +217,20 @@
                                 <action selector="logoutClicked:" destination="Lbl-k5-U4i" id="Hii-ay-R4D"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="edit-icon" id="7bl-Pb-PVj">
-                            <connections>
-                                <segue destination="hqG-gc-Ap0" kind="popoverPresentation" popoverAnchorBarButtonItem="7bl-Pb-PVj" id="GDi-mN-gKV">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="edit-icon" id="7bl-Pb-PVj">
+                                <connections>
+                                    <segue destination="hqG-gc-Ap0" kind="popoverPresentation" popoverAnchorBarButtonItem="7bl-Pb-PVj" id="GDi-mN-gKV">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="repeat.circle.fill" catalog="system" id="gPD-08-dol">
+                                <connections>
+                                    <action selector="manualRefresh:" destination="Lbl-k5-U4i" id="UpY-2Z-ARk"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="ymt-4U-Q4k" id="DaH-5Q-3Ps"/>
@@ -313,6 +320,7 @@
         <image name="close-icon" width="26" height="24"/>
         <image name="edit-icon" width="30" height="27"/>
         <image name="favor-icon" width="30" height="30"/>
+        <image name="repeat.circle.fill" catalog="system" width="128" height="121"/>
         <image name="retweet-icon" width="30" height="30"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
