@@ -1,5 +1,9 @@
 # Project 3 - *Twitter*
 
+# TODO:
+- timeline is not reloading after composing a new tweet
+- you have to reload table view right after logging in
+
 **Twitter** is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
 
 Time spent: **5.5** hours spent in total
