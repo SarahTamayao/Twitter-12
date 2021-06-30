@@ -14,8 +14,9 @@
 #import "UIImageView+AFNetworking.h" //to add methods to ImageView
 #import "NSDate+DateTools.h"
 #import "TweetDetailsViewController.h"
+#import "ComposeViewController.h"
 
-@interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSMutableArray *arrayOfTweets;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
@@ -139,7 +140,11 @@
     return [self.arrayOfTweets count];
 }
 
-
+- (void) didTweet:(Tweet *)tweet{
+    [self.arrayOfTweets insertObject:tweet atIndex:0];
+    [self.tableView reloadData];
+    NSLog(@"Compose Tweet Success!");
+}
 
 #pragma mark - Navigation
 
@@ -159,6 +164,13 @@
         
         NSLog(@"clicked on tweet");
     }
+    
+    if ([segue.identifier isEqual:@"composeTweet"]){
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+        composeController.delegate = self;
+    }
+    
 }
 
 
