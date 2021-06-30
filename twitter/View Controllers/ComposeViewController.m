@@ -8,6 +8,7 @@
 
 #import "ComposeViewController.h"
 #import "APIManager.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ComposeViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *composeTextView;
@@ -19,6 +20,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.composeTextView.layer.borderWidth = 2.0f;
+    self.composeTextView.layer.borderColor = [[UIColor systemBlueColor] CGColor];
+    self.composeTextView.layer.cornerRadius = 8;
 }
 
 - (IBAction)onTweet:(id)sender {

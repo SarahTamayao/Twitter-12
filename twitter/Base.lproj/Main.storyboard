@@ -373,18 +373,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M4E-aV-COE">
-                                <rect key="frame" x="10" y="56" width="393" height="247"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.46663126391429899" green="0.66341523587030737" blue="1" alpha="0.22180103120349703" colorSpace="custom" customColorSpace="displayP3"/>
-                                <color key="tintColor" red="0.46663126391429899" green="0.66341523587030737" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M4E-aV-COE">
+                                <rect key="frame" x="0.0" y="68" width="414" height="192"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VJ9-ZE-F5F"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VJ9-ZE-F5F" firstAttribute="trailing" secondItem="M4E-aV-COE" secondAttribute="trailing" id="3Gd-Ju-qWU"/>
+                            <constraint firstItem="M4E-aV-COE" firstAttribute="top" secondItem="VJ9-ZE-F5F" secondAttribute="top" constant="12" id="cdP-eD-5PA"/>
+                            <constraint firstItem="M4E-aV-COE" firstAttribute="leading" secondItem="VJ9-ZE-F5F" secondAttribute="leading" id="jaC-Vl-CEa"/>
+                            <constraint firstItem="VJ9-ZE-F5F" firstAttribute="bottom" secondItem="M4E-aV-COE" secondAttribute="bottom" constant="548" id="xdv-15-RjD"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xkU-nR-cuf">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="close-icon" id="Acy-Bf-gXY">
