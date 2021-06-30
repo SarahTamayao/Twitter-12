@@ -147,15 +147,18 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    UITableViewCell *tappedCell = sender;
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-    Tweet *tweet = self.arrayOfTweets[indexPath.row];
     
-    TweetDetailsViewController *tweetViewController = [segue destinationViewController];
-    tweetViewController.tweet = tweet;
-    tweetViewController.indexPath = indexPath;
-    
-    NSLog(@"clicked on tweet");
+    if ([segue.identifier isEqual:@"tweetDetails"]){
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        Tweet *tweet = self.arrayOfTweets[indexPath.row];
+        
+        TweetDetailsViewController *tweetViewController = [segue destinationViewController];
+        tweetViewController.tweet = tweet;
+        tweetViewController.indexPath = indexPath;
+        
+        NSLog(@"clicked on tweet");
+    }
 }
 
 
