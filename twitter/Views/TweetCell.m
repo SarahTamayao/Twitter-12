@@ -9,6 +9,7 @@
 #import "TweetCell.h"
 #import "APIManager.h"
 #import "UIImageView+AFNetworking.h" //to add methods to ImageView
+#import "NSDate+DateTools.h"
 
 @implementation TweetCell
 
@@ -37,7 +38,14 @@
     self.userhandeLabel.text = [@"@" stringByAppendingString: self.tweet.user.screenName];
     
     //set date
-    self.dateLabel.text = self.tweet.createdAtString;
+    NSString *dateStr = self.tweet.createdAtString;
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"E MMM d HH:mm:ss Z y"];
+
+    NSDate *tweetDate = [dateFormat dateFromString:dateStr];
+    
+    self.dateLabel.text = tweetDate.shortTimeAgoSinceNow;
     
     //set text
     self.textLabel.text = self.tweet.text;

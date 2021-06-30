@@ -12,6 +12,8 @@
 #import "LoginViewController.h"
 #import "TweetCell.h"
 #import "UIImageView+AFNetworking.h" //to add methods to ImageView
+#import "NSDate+DateTools.h"
+#import "TweetDetailsViewController.h"
 
 @interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSMutableArray *arrayOfTweets;
@@ -78,17 +80,6 @@
     [[APIManager shared] logout];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     //set inital cell
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
@@ -111,7 +102,14 @@
     cell.userhandeLabel.text = [@"@" stringByAppendingString: tweet.user.screenName];
     
     //set date
-    cell.dateLabel.text = tweet.createdAtString;
+    NSString *dateStr = tweet.createdAtString;
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"E MMM d HH:mm:ss Z y"];
+
+    NSDate *tweetDate = [dateFormat dateFromString:dateStr];
+    
+    cell.dateLabel.text = tweetDate.shortTimeAgoSinceNow;
     
     //set text
     cell.textLabel.text = tweet.text;
@@ -132,12 +130,34 @@
     //set favorite count
     cell.favoriteCountLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.arrayOfTweets count];
 }
+
+
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    UITableViewCell *tappedCell = sender;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+    Tweet *tweet = self.arrayOfTweets[indexPath.row];
+    
+    TweetDetailsViewController *tweetViewController = [segue destinationViewController];
+    tweetViewController.tweet = tweet;
+    tweetViewController.indexPath = indexPath;
+    
+    NSLog(@"clicked on tweet");
+}
+
 
 
 @end
