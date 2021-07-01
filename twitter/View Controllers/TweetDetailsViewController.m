@@ -10,6 +10,7 @@
 #import "UIImageView+AFNetworking.h" //to add methods to ImageView
 #import "NSDate+DateTools.h"
 #import "APIManager.h"
+#import "ProfileViewController.h"
 
 @interface TweetDetailsViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *pfpView;
@@ -165,14 +166,16 @@
     [self loadData];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    ProfileViewController *profile = [segue destinationViewController];
+    profile.user = self.tweet.user;
 }
-*/
+
 
 @end

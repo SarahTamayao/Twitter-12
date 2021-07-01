@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *screenName;
 @property (nonatomic, strong) NSString *profilePicture;
+@property (nonatomic, strong) NSString *idString;
+@property (nonatomic, strong) NSMutableArray *followers;
 
 //initializer -- populates fields based on dictiionary version of tweet
 - (instancetype) initWithDictionary:(NSDictionary *)dictionary;
