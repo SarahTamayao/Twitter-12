@@ -16,6 +16,8 @@
 
 - (void)getHomeTimelineWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion;
 
+- (void)getMoreHomeTimelineWithCompletion:(NSInteger *)count:(void(^)(NSArray *tweets, NSError *error))completion;
+
 - (void)getUserProfileWithCompletion:(User*)user:(void(^)(NSDictionary *userProfile, NSError *error))completion;
 
 - (void)postStatusWithText:(NSString *)text completion:(void (^)(Tweet *, NSError *))completion;

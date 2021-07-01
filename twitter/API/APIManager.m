@@ -69,6 +69,21 @@ static NSString * const baseURLString = @"https://api.twitter.com";
     }];
 }
 
+- (void)getMoreHomeTimelineWithCompletion:(NSInteger *)count:(void(^)(NSArray *tweets, NSError *error))completion {
+    NSString *urlRequest = @"1.1/statuses/home_timeline.json?count=";
+    NSString *countParameter = [NSString stringWithFormat:@"%d", count];
+    NSString *getRequest = [urlRequest stringByAppendingString:countParameter];
+    [self GET:(getRequest)
+       parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable tweetDictionaries) {
+           // Success
+           NSMutableArray *tweets  = [Tweet tweetsWithArray:tweetDictionaries];
+           completion(tweets, nil);
+       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+           // There was a problem
+           completion(nil, error);
+    }];
+}
+
 - (void)getUserProfileWithCompletion:(User *)user:(void(^)(NSDictionary *userProfile, NSError *error))completion {
     
     [self GET:([@"1.1/users/show.json?user_id=" stringByAppendingString:user.idString])
