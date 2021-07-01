@@ -175,6 +175,7 @@
     // Pass the selected object to the new view controller.
     ProfileViewController *profile = [segue destinationViewController];
     profile.user = self.tweet.user;
+    NSLog(@"Profile tapped");
 }
 
 
