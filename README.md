@@ -2,7 +2,7 @@
 
 **Twitter** is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
 
-Time spent: **9.5** hours spent in total
+Time spent: **12.5** hours spent in total
 
 ## User Stories
 
@@ -27,27 +27,28 @@ The following **optional** features are implemented:
   - Contains a section with the users basic stats: # tweets, # following, # followers
   - [ ] Profile view should include that user's timeline
 - [x] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count. Refer to [[this guide|unretweeting]] for help on implementing unretweeting.
-- [ ] Links in tweets are clickable.
 - [x] User can tap the profile image in any tweet to see another user's profile
   - Contains the user header view: picture and tagline
   - Contains a section with the users basic stats: # tweets, # following, # followers
-- [ ] User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
 - [x] When composing, you should have a countdown for the number of characters remaining for the tweet (out of 280) (**1 point**)
 - [x] After creating a new tweet, a user should be able to view it in the timeline immediately without refetching the timeline from the network.
+- [x] User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
+- [x] User can switch between timeline, mentions, or profile view through a tab bar (**3 points**) (only timeline and profile view)
+- [ ] Links in tweets are clickable.
 - [ ] User can reply to any tweet, and replies should be prefixed with the username and the reply_id should be set when posting the tweet (**2 points**)
 - [ ] User sees embedded images in tweet if available
-- [x] User can switch between timeline, mentions, or profile view through a tab bar (**3 points**)
 - [ ] Profile Page: pulling down the profile page should blur and resize the header image. (**4 points**)
 
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [x] other user's profile indicates if current user follows them
+- [x] verified status is shown on verified users
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. I want to extend my app by adding replying and following capabilities.
+2. I want to see if it is possible to have only one profile storyboard for both the current user and all other users.
 
 ## Video Walkthrough
 
@@ -62,6 +63,9 @@ GIF created with [Kap](https://getkap.co/).
 I can use this project to:
 
 - logout/login with OAuth
+- write my own functions
+- API references
+- general project structure
 
 ## Credits
 
