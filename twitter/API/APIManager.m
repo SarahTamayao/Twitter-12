@@ -96,6 +96,18 @@ static NSString * const baseURLString = @"https://api.twitter.com";
     }];
 }
 
+- (void)getMyProfileWithCompletion:(void(^)(NSDictionary *myProfile, NSError *error))completion {
+    
+    [self GET:(@"1.1/account/verify_credentials.json")
+       parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable myProfile) {
+           // Success
+           completion(myProfile, nil);
+       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+           // There was a problem
+           completion(nil, error);
+    }];
+}
+
 // Post Composed Tweet Method
 - (void)postStatusWithText:(NSString *)text completion:(void (^)(Tweet *, NSError *))completion{
     NSString *urlString = @"1.1/statuses/update.json";

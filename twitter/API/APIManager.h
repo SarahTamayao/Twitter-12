@@ -20,6 +20,8 @@
 
 - (void)getUserProfileWithCompletion:(User*)user:(void(^)(NSDictionary *userProfile, NSError *error))completion;
 
+- (void)getMyProfileWithCompletion:(void(^)(NSDictionary *myProfile, NSError *error))completion;
+
 - (void)postStatusWithText:(NSString *)text completion:(void (^)(Tweet *, NSError *))completion;
 
 - (void)favorite:(Tweet *)tweet completion:(void (^)(Tweet *, NSError *))completion;

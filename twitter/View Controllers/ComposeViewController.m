@@ -9,10 +9,13 @@
 #import "ComposeViewController.h"
 #import "APIManager.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UIImageView+AFNetworking.h" //to add methods to ImageView
 
 @interface ComposeViewController () <UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *composeTextView;
 @property (weak, nonatomic) IBOutlet UILabel *characterCount;
+@property (nonatomic, strong) NSDictionary *userProfile;
+@property (weak, nonatomic) IBOutlet UIImageView *pfpView;
 
 @end
 
@@ -25,6 +28,8 @@
     self.composeTextView.layer.borderWidth = 2.0f;
     self.composeTextView.layer.borderColor = [[UIColor systemBlueColor] CGColor];
     self.composeTextView.layer.cornerRadius = 8;
+    
+    [self fetchUser];
 }
 
 - (IBAction)onTweet:(id)sender {
@@ -56,6 +61,29 @@
         self.characterCount.textColor = [UIColor blackColor];
     }
     return newText.length < characterLimit;
+}
+
+- (void) fetchUser{
+    [[APIManager shared] getMyProfileWithCompletion:^(NSDictionary *myProfile, NSError *error) {
+        if (myProfile) {
+            self.userProfile = myProfile;
+            NSLog(@"😎😎😎 Successfully loaded my profile");
+            [self loadImage];
+//            for (Tweet *t in tweets) {
+//                NSString *text = t.text;
+//                NSLog(@"%@", text);
+//            }
+        } else {
+            NSLog(@"😫😫😫 Error getting my profile: %@", error.localizedDescription);
+        }
+    }];
+}
+
+- (void) loadImage{
+    NSString *URLString = self.userProfile[@"profile_image_url"];
+    NSURL *url = [NSURL URLWithString:URLString];
+    self.pfpView.image = nil; //clears out image from previous self so that when it lags, the previous image doesn't show up
+    [self.pfpView setImageWithURL:url];
 }
 
 /*
