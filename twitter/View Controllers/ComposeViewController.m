@@ -10,8 +10,9 @@
 #import "APIManager.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface ComposeViewController ()
+@interface ComposeViewController () <UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *composeTextView;
+@property (weak, nonatomic) IBOutlet UILabel *characterCount;
 
 @end
 
@@ -20,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.composeTextView.delegate = self;
     self.composeTextView.layer.borderWidth = 2.0f;
     self.composeTextView.layer.borderColor = [[UIColor systemBlueColor] CGColor];
     self.composeTextView.layer.cornerRadius = 8;
@@ -41,6 +42,20 @@
 
 - (IBAction)onClose:(id)sender {
     [self dismissViewControllerAnimated:true completion:nil];
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)repText{
+    int characterLimit = 140;
+    NSString *newText = [self.composeTextView.text stringByReplacingCharactersInRange:range withString:repText];
+    if(newText.length >= characterLimit) {
+        self.characterCount.text = @"max character count reached";
+        self.characterCount.textColor = [UIColor redColor];
+    }
+    else{
+        self.characterCount.text = [NSString stringWithFormat:@"%d", newText.length];
+        self.characterCount.textColor = [UIColor blackColor];
+    }
+    return newText.length < characterLimit;
 }
 
 /*

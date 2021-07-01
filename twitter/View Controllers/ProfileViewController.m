@@ -75,10 +75,14 @@
     self.bioLabel.text = self.userProfile[@"description"];
     
     self.favoriteCount.text = [NSString stringWithFormat:@"%@", self.userProfile[@"favourites_count"]];
-    
+
     self.followersCount.text = [NSString stringWithFormat:@"%@", self.userProfile[@"followers_count"]];
     
     self.followingCount.text = [NSString stringWithFormat:@"%@", self.userProfile[@"friends_count"]];
+    
+    NSLog(self.favoriteCount.text);
+    NSLog(self.followersCount.text);
+    NSLog(self.followingCount.text);
     
     if(self.userProfile[@"following"]){
         self.followingButton.backgroundColor = [UIColor systemBlueColor];
