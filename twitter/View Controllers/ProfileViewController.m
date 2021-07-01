@@ -67,7 +67,8 @@
     self.bannerView.image = nil; //clears out image from previous self so that when it lags, the previous image doesn't show up
     [self.bannerView setImageWithURL:bgUrl];
     
-    if (self.userProfile[@"verified"]){
+    NSString *verifiedCheck =[NSString stringWithFormat:@"%@", self.userProfile[@"verified"]];
+    if ([verifiedCheck isEqualToString:@"1"]){
         self.verifiedIcon.alpha = 1;
     }
     else {self.verifiedIcon.alpha = 0;}
