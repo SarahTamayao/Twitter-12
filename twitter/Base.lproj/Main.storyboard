@@ -30,7 +30,7 @@
                                 <state key="normal" title="Login with Twitter"/>
                                 <connections>
                                     <action selector="didTapLogin:" destination="c3O-zL-0ZQ" eventType="touchUpInside" id="fgh-gR-NhB"/>
-                                    <segue destination="zfu-RR-kMV" kind="presentation" identifier="loginSegue" modalPresentationStyle="fullScreen" id="c8y-65-7rx"/>
+                                    <segue destination="FTQ-G1-N2b" kind="presentation" identifier="loginSegue" modalPresentationStyle="fullScreen" id="08h-tS-wd5"/>
                                 </connections>
                             </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="TwitterLogoBlue" translatesAutoresizingMaskIntoConstraints="NO" id="KMY-gb-DAH">
@@ -338,18 +338,11 @@
                                 <action selector="logoutClicked:" destination="Lbl-k5-U4i" id="Hii-ay-R4D"/>
                             </connections>
                         </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem title="Item" image="edit-icon" id="7bl-Pb-PVj">
-                                <connections>
-                                    <segue destination="hqG-gc-Ap0" kind="presentation" identifier="composeTweet" id="GDi-mN-gKV"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Item" image="repeat.circle" catalog="system" id="gPD-08-dol">
-                                <connections>
-                                    <action selector="manualRefresh:" destination="Lbl-k5-U4i" id="UpY-2Z-ARk"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="edit-icon" id="7bl-Pb-PVj">
+                            <connections>
+                                <segue destination="hqG-gc-Ap0" kind="presentation" identifier="composeTweet" id="GDi-mN-gKV"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="ymt-4U-Q4k" id="DaH-5Q-3Ps"/>
@@ -596,24 +589,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2gq-Vo-3lt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3437.68115942029" y="43.526785714285715"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="wHZ-A3-b8f">
-            <objects>
-                <tabBarController storyboardIdentifier="tabController" id="zfu-RR-kMV" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YPb-No-XBj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="FTQ-G1-N2b" kind="relationship" relationship="viewControllers" id="Zg5-pO-kCm"/>
-                        <segue destination="vKk-Fo-2eQ" kind="relationship" relationship="viewControllers" id="7cG-NR-eli"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fPK-Xb-UG5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="859" y="-751"/>
         </scene>
         <!--Home-->
         <scene sceneID="WUT-Ke-VeR">

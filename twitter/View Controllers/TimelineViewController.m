@@ -41,6 +41,8 @@
     [self.refreshControl setTintColor:[UIColor blueColor]];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
     
+    [self fetchTweets];
+    
 }
 
 -(void) fetchTweets{

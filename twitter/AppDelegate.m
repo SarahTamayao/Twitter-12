@@ -20,8 +20,8 @@
     
     if ([[APIManager shared] isAuthorized]) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UITabBarController *tabController = [storyboard instantiateViewControllerWithIdentifier:@"tabController"];
-        self.window.rootViewController = tabController;
+        UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"TweetsNavigationController"];
+        self.window.rootViewController = navigationController;
     }
     
     return YES;
