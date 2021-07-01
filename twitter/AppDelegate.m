@@ -6,6 +6,8 @@
 //  Copyright © 2018 Emerson Malca. All rights reserved.
 //
 
+//This file was given in the template, I modified didFinishLaunchingWithOptions
+
 #import "AppDelegate.h"
 #import "APIManager.h"
 

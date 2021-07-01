@@ -38,12 +38,7 @@
     [[APIManager shared] getMyProfileWithCompletion:^(NSDictionary *myProfile, NSError *error) {
         if (myProfile) {
             self.userProfile = myProfile;
-            NSLog(@"😎😎😎 Successfully loaded my profile");
             [self loadProfile];
-//            for (Tweet *t in tweets) {
-//                NSString *text = t.text;
-//                NSLog(@"%@", text);
-//            }
         } else {
             NSLog(@"😫😫😫 Error getting my profile: %@", error.localizedDescription);
         }

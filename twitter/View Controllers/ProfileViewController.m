@@ -40,12 +40,7 @@
     [[APIManager shared] getUserProfileWithCompletion:(self.myUser):^(NSDictionary *userProfile, NSError *error) {
         if (userProfile) {
             self.userProfile = userProfile;
-            NSLog(@"😎😎😎 Successfully loaded user profile");
             [self loadProfile];
-//            for (Tweet *t in tweets) {
-//                NSString *text = t.text;
-//                NSLog(@"%@", text);
-//            }
         } else {
             NSLog(@"😫😫😫 Error getting followers: %@", error.localizedDescription);
         }
@@ -57,7 +52,6 @@
     self.handleLabel.text = [@"@" stringByAppendingString:self.userProfile[@"screen_name"]];
 
     NSString *URLString = self.userProfile[@"profile_image_url"];
-    NSLog(URLString);
     NSURL *url = [NSURL URLWithString:URLString];
     self.pfpView.image = nil; //clears out image from previous self so that when it lags, the previous image doesn't show up
     [self.pfpView setImageWithURL:url];
@@ -80,10 +74,6 @@
     self.followersCount.text = [NSString stringWithFormat:@"%@", self.userProfile[@"followers_count"]];
     
     self.followingCount.text = [NSString stringWithFormat:@"%@", self.userProfile[@"friends_count"]];
-    
-    NSLog(self.favoriteCount.text);
-    NSLog(self.followersCount.text);
-    NSLog(self.followingCount.text);
     
     if(self.userProfile[@"following"]){
         self.followingButton.backgroundColor = [UIColor systemBlueColor];

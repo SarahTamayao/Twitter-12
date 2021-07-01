@@ -68,7 +68,6 @@
 }
 
 - (IBAction)didTapRetweet:(id)sender {
-    NSLog(@"tapped retweet");
     if (self.tweet.retweeted){
         self.tweet.retweeted = NO;
         self.tweet.retweetCount -= 1;
@@ -77,9 +76,6 @@
          [[APIManager shared] unretweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
              if(error){
                   NSLog(@"Error unretweeting tweet: %@", error.localizedDescription);
-             }
-             else{
-                 NSLog(@"Successfully unretweeted the following Tweet: %@", tweet.text);
              }
          }];
     }
@@ -92,9 +88,6 @@
              if(error){
                   NSLog(@"Error retweeting tweet: %@", error.localizedDescription);
              }
-             else{
-                 NSLog(@"Successfully retweeted the following Tweet: %@", tweet.text);
-             }
          }];
     }
     
@@ -103,7 +96,6 @@
 
 
 - (IBAction)didTapFavorite:(id)sender {
-    NSLog(@"tapped favorite");
     if (self.tweet.favorited){
         self.tweet.favorited = NO;
         self.tweet.favoriteCount -= 1;
@@ -112,9 +104,6 @@
          [[APIManager shared] unfavorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
              if(error){
                   NSLog(@"Error unfavoriting tweet: %@", error.localizedDescription);
-             }
-             else{
-                 NSLog(@"Successfully unfavorited the following Tweet: %@", tweet.text);
              }
          }];
     }
@@ -126,9 +115,6 @@
          [[APIManager shared] favorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
              if(error){
                   NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
-             }
-             else{
-                 NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
              }
          }];
     }

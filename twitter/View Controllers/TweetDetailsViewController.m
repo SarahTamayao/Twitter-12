@@ -7,7 +7,7 @@
 //
 
 #import "TweetDetailsViewController.h"
-#import "UIImageView+AFNetworking.h" //to add methods to ImageView
+#import "UIImageView+AFNetworking.h"
 #import "NSDate+DateTools.h"
 #import "APIManager.h"
 #import "ProfileViewController.h"
@@ -29,7 +29,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     [self loadData];
 }
@@ -38,16 +37,13 @@
     NSString *URLString = self.tweet.user.profilePicture;
     NSURL *url = [NSURL URLWithString:URLString];
     NSData *urlData = [NSData dataWithContentsOfURL:url];
-    self.pfpView.image = nil; //clears out image from previous self so that when it lags, the previous image doesn't show up
+    self.pfpView.image = nil;
     [self.pfpView setImageWithURL:url];
     
-    //set name
     self.usernameLabel.text = self.tweet.user.name;
     
-    //set handle
     self.userhandleLabel.text = [@"@" stringByAppendingString: self.tweet.user.screenName];
     
-    //set date
     NSString *dateStr = self.tweet.createdAtString;
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -57,36 +53,25 @@
     
     self.dateLabel.text = tweetDate.shortTimeAgoSinceNow;
     
-    //set text
     self.textLabel.text = self.tweet.text;
     
-    //set retweeted
     UIImage *rticon = [UIImage imageNamed:@"retweet-icon"];
     if(self.tweet.retweeted) rticon = [UIImage imageNamed:@"retweet-icon-green"];
     [self.retweetIcon setImage:rticon forState:UIControlStateNormal];
     
-    //set retweet count
     self.retweetCountLabel.text = [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
     
-    //set favorited
     UIImage *favoricon = [UIImage imageNamed:@"favor-icon"];
     if(self.tweet.favorited) favoricon = [UIImage imageNamed:@"favor-icon-red"];
     [self.favoriteIcon setImage:favoricon forState:UIControlStateNormal];
     
-    //set favorite count
     self.favoriteCountLabel.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
 }
 
 -(void) fetchTweet{
-    // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
             self.tweet = tweets[self.indexPath.row];
-            NSLog(@"😎😎😎 Successfully loaded tweet");
-            for (Tweet *t in tweets) {
-                NSString *text = t.text;
-                NSLog(@"%@", text);
-            }
         } else {
             NSLog(@"😫😫😫 Error getting tweet: %@", error.localizedDescription);
         }
@@ -99,7 +84,6 @@
 }
 
 - (IBAction)didTapRetweet:(id)sender {
-    NSLog(@"tapped retweet");
     if (self.tweet.retweeted){
         self.tweet.retweeted = NO;
         self.tweet.retweetCount -= 1;
@@ -108,9 +92,6 @@
          [[APIManager shared] unretweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
              if(error){
                   NSLog(@"Error unretweeting tweet: %@", error.localizedDescription);
-             }
-             else{
-                 NSLog(@"Successfully unretweeted the following Tweet: %@", tweet.text);
              }
          }];
     }
@@ -123,9 +104,6 @@
              if(error){
                   NSLog(@"Error retweeting tweet: %@", error.localizedDescription);
              }
-             else{
-                 NSLog(@"Successfully retweeted the following Tweet: %@", tweet.text);
-             }
          }];
     }
     
@@ -133,7 +111,6 @@
 }
 
 - (IBAction)didTapFavorite:(id)sender {
-    NSLog(@"tapped favorite");
     if (self.tweet.favorited){
         self.tweet.favorited = NO;
         self.tweet.favoriteCount -= 1;
@@ -142,9 +119,6 @@
          [[APIManager shared] unfavorite:self.tweet completion:^(Tweet *tweet, NSError *error) {
              if(error){
                   NSLog(@"Error unfavoriting tweet: %@", error.localizedDescription);
-             }
-             else{
-                 NSLog(@"Successfully unfavorited the following Tweet: %@", tweet.text);
              }
          }];
     }
@@ -157,9 +131,6 @@
              if(error){
                   NSLog(@"Error favoriting tweet: %@", error.localizedDescription);
              }
-             else{
-                 NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
-             }
          }];
     }
     
@@ -169,13 +140,9 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     ProfileViewController *profileViewController = [segue destinationViewController];
     profileViewController.myUser = self.tweet.user;
-    NSLog(@"Profile tapped");
 }
 
 

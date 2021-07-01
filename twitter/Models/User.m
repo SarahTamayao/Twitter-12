@@ -17,7 +17,6 @@
         self.screenName = dictionary[@"screen_name"];
         self.profilePicture = dictionary[@"profile_image_url_https"];
         self.idString = [NSString stringWithFormat:@"%@", dictionary[@"id"]];
-        NSLog([@"User ID: " stringByAppendingString:self.idString]);
         //initalize other properties
     }
     return self;

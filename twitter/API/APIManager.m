@@ -18,6 +18,7 @@ static NSString * const baseURLString = @"https://api.twitter.com";
 
 @implementation APIManager
 
+//this function was pulled from codepath
 + (instancetype)shared {
     static APIManager *sharedManager = nil;
     static dispatch_once_t onceToken;
@@ -27,6 +28,7 @@ static NSString * const baseURLString = @"https://api.twitter.com";
     return sharedManager;
 }
 
+//this function was pulled from codepath
 - (instancetype)init {
     
     NSURL *baseURL = [NSURL URLWithString:baseURLString];
@@ -56,6 +58,7 @@ static NSString * const baseURLString = @"https://api.twitter.com";
     return self;
 }
 
+//this function was pulled from codepath
 - (void)getHomeTimelineWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion {
     
     [self GET:(@"1.1/statuses/home_timeline.json")
