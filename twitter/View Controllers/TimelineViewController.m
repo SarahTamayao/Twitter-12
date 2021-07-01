@@ -40,9 +40,6 @@
     [self.refreshControl addTarget:self action:@selector(fetchTweets) forControlEvents:UIControlEventValueChanged]; //call fetchMovies on self when UIControlEventValueChanged
     [self.refreshControl setTintColor:[UIColor blueColor]];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
-    
-    [self fetchTweets];
-    
 }
 
 -(void) fetchTweets{
@@ -51,10 +48,6 @@
         if (tweets) {
             self.arrayOfTweets = tweets;
             NSLog(@"😎😎😎 Successfully loaded home timeline");
-            for (Tweet *t in tweets) {
-                NSString *text = t.text;
-                NSLog(@"%@", text);
-            }
             [self.tableView reloadData];
         } else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
