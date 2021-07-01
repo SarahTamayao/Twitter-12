@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ProfileViewController : UIViewController
 
-@property (nonatomic, strong) User *user;
+@property (nonatomic, strong) User *myUser;
 
 @end
 

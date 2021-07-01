@@ -69,12 +69,12 @@ static NSString * const baseURLString = @"https://api.twitter.com";
     }];
 }
 
-- (void)getFollowersWithCompletion:(User *)user:(void(^)(NSMutableArray *followers, NSError *error))completion {
+- (void)getUserProfileWithCompletion:(User *)user:(void(^)(NSDictionary *userProfile, NSError *error))completion {
     
-    [self GET:([@"1.1/followers.json?" stringByAppendingString:user.idString])
-       parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSArray *  _Nullable followers) {
+    [self GET:([@"1.1/users/show.json?user_id=" stringByAppendingString:user.idString])
+       parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable userProfile) {
            // Success
-           completion(followers, nil);
+           completion(userProfile, nil);
        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
            // There was a problem
            completion(nil, error);

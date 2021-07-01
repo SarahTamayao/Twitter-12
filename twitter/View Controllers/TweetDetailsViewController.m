@@ -173,8 +173,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    ProfileViewController *profile = [segue destinationViewController];
-    profile.user = self.tweet.user;
+    ProfileViewController *profileViewController = [segue destinationViewController];
+    profileViewController.myUser = self.tweet.user;
     NSLog(@"Profile tapped");
 }
 

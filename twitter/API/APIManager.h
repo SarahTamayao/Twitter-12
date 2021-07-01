@@ -16,7 +16,7 @@
 
 - (void)getHomeTimelineWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion;
 
-- (void)getFollowersWithCompletion:(User*)user:(void(^)(NSMutableArray *followers, NSError *error))completion;
+- (void)getUserProfileWithCompletion:(User*)user:(void(^)(NSDictionary *userProfile, NSError *error))completion;
 
 - (void)postStatusWithText:(NSString *)text completion:(void (^)(Tweet *, NSError *))completion;
 
