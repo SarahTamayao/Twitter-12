@@ -55,18 +55,23 @@ Please list two areas of the assignment you'd like to **discuss further with you
 Here's a walkthrough of implemented user stories:
 
 Main GIF:
+
 <img src='twitter.gif' title='Video Walkthrough' width='' alt='Video Walkthrough'  width=200 height=500 />
 
 Launch Screen + App Icon:
+
 <img src='launch screen.gif' title='Video Walkthrough' width='' alt='Video Walkthrough'  width=200 height=500 />
 
-iPhone 8: 
+iPhone 8:
+
 <img src='iphone 8.gif' title='Video Walkthrough' width='' alt='Video Walkthrough'  width=200 height=500 />
 
 iPhone 8 Plus:
+
 <img src='iphone 8plus.gif' title='Video Walkthrough' width='' alt='Video Walkthrough'  width=200 height=500 />
 
 iPhone SE:
+
 <img src='iphone se.gif' title='Video Walkthrough' width='' alt='Video Walkthrough'  width=200 height=500 />
 
 GIF created with [Kap](https://getkap.co/).
